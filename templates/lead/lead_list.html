@@ -1,0 +1,30 @@
+{% extends '../crm/base.html' %}
+{% block title %} leads {% endblock title %}
+
+
+
+{% block body %}
+<div class="px-6 py-6" >
+    <h1 class="mb-4 text-xl">Leads</h1>
+    <a href="{% url 'add-lead'%}" class="inline-block bg-teal-600  text-white py-4 px-5  hover:text-current rounded-2xl hover:bg-teal-400 hover:text-white hover:rounded-xl duration-500" >add lead</a> 
+    
+    <div class="flex justify-between mt-6">
+        <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Name</p>
+        <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Priority</p>
+        <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Status</p>
+    </div>
+    
+    
+    {% for lead  in leads %}
+    <div class="flex justify-between">
+        <p class="py-2 px-2 w-full {% cycle '' 'bg-gray-200'%}">
+            <a href="{%url 'lead_detail' lead.id%}">{{lead.name}}</a></p>
+        <p class="py-2 px-2 w-full {% cycle '' 'bg-gray-200'%}">{{lead.get_priority_display}}</p>
+        <p class="py-2 px-2 w-full {% cycle '' 'bg-gray-200'%}">{{lead.get_status_display}}</p>
+    </div>
+    {% empty %}
+        <p class="px-2">There is no leads in the database yet...</p>
+    {% endfor %}
+    
+</div>
+{% endblock body %}

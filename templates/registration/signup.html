@@ -1,0 +1,10 @@
+{% extends '../crm/base.html' %}
+{% block title %}signup{% endblock title %}
+{% block body %}
+<form method="POST" action=".">
+    {% csrf_token %}
+    {% if error %}you enterd wrong information...<a href={% url 'signup' %}>try again</a>{% endif %}
+    {{form.as_p}}
+    <button >Submit</button>
+</form> 
+{% endblock body %}

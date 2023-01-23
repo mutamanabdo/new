@@ -1,0 +1,12 @@
+{% extends '../crm/base.html' %}
+{% block title %} dashboard {% endblock title %}
+{% block nav %} 
+<a href="{% url 'lead_list'%}" class="bg-teal-600  text-white py-2 px-2  hover:text-current rounded-2xl hover:bg-teal-400 hover:text-white hover:rounded-xl duration-500" >leads</a> 
+<a href="{% url 'client_list'%}" class="bg-teal-600  text-white py-2 px-2  hover:text-current rounded-2xl hover:bg-teal-400 hover:text-white hover:rounded-xl duration-500" >clients</a> 
+
+
+{% endblock nav %}
+
+{% block body %}
+ <p class="m-2">this is dashboard! </p>
+{% endblock body %}

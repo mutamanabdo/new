@@ -1,0 +1,30 @@
+{% extends '../crm/base.html' %}
+{% block title %} {{client.name}} {% endblock title %}
+
+{% block body %} 
+    <div class="py-4 px-5">
+        <h1 class="mb-4 text-xl"> {{client.name}} </h1>
+    
+    {% if client.description %}
+    <p class="font-semibold"> description </p>
+    <p class="mb-2">{{ client.description }}</p>
+    {% endif %}
+
+    <p class=" font-semibold">Created at</p>
+    <p class=" mb-2">{{client.created_at}}</p>
+
+    <p class="font-semibold">Modifed at </p>
+    <p class=" mb-6">{{client.modified_at}}</p>
+
+    <hr>
+    <a href="{% url 'client_delete' client.id%}" class="inline-block bg-red-600  text-white py-4 px-2  hover:text-current rounded-2xl hover:bg-red-400 hover:text-white hover:rounded-xl duration-500 ml-3" >delete client</a>
+    {% comment %} <a href="{% url 'convert_to_client' lead.id%}" class="inline-block bg-blue-600  text-white py-4 px-2  hover:text-current rounded-2xl hover:bg-blue-400 hover:text-white hover:rounded-xl duration-500 ml-3" >convert to client</a> {% endcomment %}
+    
+    <a href="{% url 'client_edit' client.id%}" class="inline-block bg-teal-300  text-white py-4 px-5  hover:text-current rounded-2xl hover:bg-red-400 hover:text-white hover:rounded-xl duration-500 ml-5" >edit client</a> 
+    
+
+    <hr>
+    
+    <a href="{% url 'client_list' %}">back to clients</a>
+</div>
+{% endblock body%}

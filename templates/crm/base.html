@@ -1,0 +1,58 @@
+{%load tailwind_tags %}
+<!doctype html>
+<html>
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    <title>{% block title %}{%endblock title%}</title>
+  </head>
+  <body>
+    <nav class="flex bg-teal-500 justify-between hover:drop-shadow-2xl drop-shadow-sm py-2">
+      
+      <a href="{% url 'index'%}" class="py-4 px-5 text-white hover:ease-out duration-500 ">crm</a>
+        <div>
+          {% if request.user.is_authenticated %}
+            <a href="{% url 'logout'%}" class=' justify-center -linear py-2 px-3 bg-red-700  text-white  hover:text-current rounded-2xl  hover:rounded-xl hover:duration-500S hover:bg-red-600 hover:text-white'>logout</a>
+            <a href="{% url 'dashboard'%}" class="bg-teal-600  text-white py-2 px-2  hover:text-current rounded-2xl hover:bg-teal-400 hover:text-white hover:rounded-xl duration-500" >dashboard</a> 
+            {% block nav %} {% endblock nav %}
+          {% else %}
+          <a href="{% url 'login'%}" class="bg-blue-600  text-white py-2 px-2  hover:text-current rounded-2xl hover:bg-blue-500 hover:text-white hover:rounded-xl duration-500">login</a>
+          <a href="{% url 'signup'%}" class="bg-green-600  text-white py-2 px-2  hover:text-current rounded-2xl hover:bg-green-500 hover:text-white hover:rounded-xl duration-500">signup</a>
+        {% endif %}
+      </div>
+    </nav>
+    {% if messages %}
+      <div class="py-6 px6">
+        {% for message in messages %}
+          <div class=" px-4 py-4 bg-teal-300 rounded-xl">
+            {{message}}
+          </div>
+        {% endfor %}
+      </div>  
+    {% endif %}
+    
+    <!-- <p> <div class=" absolute bg-slate-600 rounded-full top-0 -left-0 w-72 h-72 "></div></p> -->
+    {% block body %}{%endblock body%}
+    <footer class="py-8 text-center bg-gray-200">
+      
+           
+      <p class="text-s text-center text-gray-900">Copy rigth - crm</p>
+    </footer>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/63ccd532c2f1ac1e202ef5d6/1gnc21k8o';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+      })();
+      </script>
+      <!--End of Tawk.to Script-->
+  </body>
+
+</html>
